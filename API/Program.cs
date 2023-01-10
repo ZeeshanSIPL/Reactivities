@@ -13,6 +13,14 @@ builder.Services.AddDbContext<DataContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddCors(opt=>
+{
+    opt.AddPolicy("CorsPolicy", policy=>
+    {
+    policy.AllowAnyMethod().AllowAnyMethod().WithOrigins("http://localhost:3000");
+
+    });
+ });
 
 var app = builder.Build();
  
@@ -22,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("CorsPolicy"); 
 
 app.UseAuthorization();
 
@@ -43,6 +51,5 @@ catch (Exception ex)
     logger.LogError(ex,"An error occured during Migration");
 
 }
-
 
 app.Run();
