@@ -16,7 +16,7 @@ interface Props{
   submitting :boolean;
 
 }
-export default observer ( function ActivityDashboard({activities,deleteActivity,submitting}:Props)
+export default observer ( function ActivityDashboard()
 {
    const {activityStore}= useStore();
    const {selectedActivity,editMode}= activityStore;
@@ -24,10 +24,7 @@ export default observer ( function ActivityDashboard({activities,deleteActivity,
     return(
         <Grid>
             <Grid.Column width='10'>
-            <ActivityList activities={activities}        
-            deleteActivity ={deleteActivity}
-            submitting ={submitting}
-            />
+            <ActivityList />
          
             </Grid.Column>
             <Grid.Column width='6'>

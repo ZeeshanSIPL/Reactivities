@@ -14,28 +14,11 @@ import { observer } from 'mobx-react-lite';
 function App() {
   const {activityStore} =useStore();
   
-  const [activities,setActivities] =useState<Activity[]>([]);
-  const [selectedActivity, setSelectedActivity]= useState<Activity | undefined>(undefined);
-
-  const [submitting,setSubmitting]=useState(false);
-
   useEffect(()=>{
     activityStore.loadActivities();
 
 
-  },[activityStore])
-
-
-   function hanleDeleteActivity(id : string){
-    setSubmitting(true);
-    agent.Activities.delete(id).then(() =>{
-      setActivities([...activities.filter(x =>x.id !== id)]);
-      setSubmitting(false);
-
-
-    })
-    setActivities([...activities.filter(x=>x.id !== id)])
-  }
+  },[activityStore])  
 
   if(activityStore.loadingInitial) return <LoadingComponent content='Loading app'/>
   return (
@@ -44,16 +27,9 @@ function App() {
      <NavBar />
      <Container style={{marginTop:'7em' }}>   
 
-      <ActivityDashboard 
-      activities= {activityStore.activities}
-      selectedActivity= {selectedActivity}  
-      
-      deleteActivity ={hanleDeleteActivity}
-      submitting ={submitting}
-      
+      <ActivityDashboard       
       />
       
-
       </Container>
 
       </>
