@@ -26,7 +26,7 @@ export default observer(function ActivityDetails() {
     if (loadingInitial ||  !activity) return<LoadingComponent/>;
 
     return (
-        // <Card fluid>
+        //<Card fluid>
         //     <Image src={`/assets/categoryImages/${activity.category}.jpg`} />
         //     <Card.Content>
         //         <Card.Header>{activity.title}</Card.Header>
@@ -44,7 +44,7 @@ export default observer(function ActivityDetails() {
                     
         //         </Button.Group>
           
-        //     </Card.Content>
+        // //     </Card.Content>
         // </Card>
         <Grid>
             <Grid.Column width={10}>
