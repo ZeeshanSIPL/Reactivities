@@ -2,16 +2,20 @@ using System.Collections.Generic;
 using Application.Activities;
 using Domain;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 namespace API.Controllers
 {
+    [AllowAnonymous ]  
+    [ApiController]
+    [Route("api/[controller]")]
      public class ActivitiesController: BaseApiController
  
     {
-        [HttpGet]  //api/activities
+        [HttpGet("getactivity")]  //api/activities
        // public async Task<ActionResult<List<Activity>>>GetActivities(CancellationToken ct)
         public async Task<IActionResult>GetActivities()
         {

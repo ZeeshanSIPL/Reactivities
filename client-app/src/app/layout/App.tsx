@@ -12,8 +12,9 @@ function App() {
   const location =useLocation();
   const {activityStore} =useStore();
   
-  useEffect(()=>{
+  useEffect(()=>{ 
     activityStore.loadActivities();
+    
 
 
   },[activityStore])  
